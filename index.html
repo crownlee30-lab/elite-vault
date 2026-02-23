@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRTUAL_VAULT | Elite Code Assets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+        body { background-color: #050505; color: #00FF41; font-family: 'Space Mono', monospace; }
+        .crt-line { background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%; pointer-events: none; position: fixed; inset: 0; z-index: 100; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .scanline { width: 100%; height: 2px; background: rgba(0, 255, 65, 0.1); position: absolute; animation: scan 4s linear infinite; }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+    <div class="crt-line"></div>
+
+    <nav class="flex justify-between items-center mb-20">
+        <div class="text-xl font-bold tracking-widest">[ VIRTUAL_VAULT ]</div>
+        <div class="text-xs text-gray-500">ENCRYPTED_SESSION_ACTIVE</div>
+    </nav>
+
+    <header class="text-center mb-20">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tighter">Proprietary Code Assets</h1>
+        <p class="text-gray-400 text-sm italic">Direct Acquisition via Lead Bank Transfer</p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div class="glass p-8 rounded-xl hover:border-[#00FF41] transition duration-500 relative overflow-hidden group">
+            <div class="scanline opacity-0 group-hover:opacity-100"></div>
+            <h2 class="text-2xl mb-2">SSL_V3.bundle</h2>
+            <p class="text-gray-500 text-xs mb-6">3 Pages: Server Config / CSR / Pinning</p>
+            <p class="text-2xl font-bold mb-6 text-white">$499.00</p>
+            <button onclick="openCheckout()" class="w-full py-3 border border-[#00FF41] hover:bg-[#00FF41] hover:text-black transition">ACQUIRE</button>
+        </div>
+
+        <div class="glass p-8 rounded-xl border-[#00FF41]/30 border-2 relative overflow-hidden group">
+            <div class="scanline"></div>
+            <h2 class="text-2xl mb-2 text-white">XXS_FRAMEWORK</h2>
+            <p class="text-gray-400 text-xs mb-6">5 Pages: Kernel / Validator / Bridge</p>
+            <p class="text-2xl font-bold mb-6 text-white">$850.00</p>
+            <button onclick="openCheckout()" class="w-full py-3 bg-[#00FF41] text-black font-bold">ACQUIRE</button>
+        </div>
+
+        <div class="glass p-8 rounded-xl hover:border-[#00FF41] transition duration-500 relative overflow-hidden group">
+            <h2 class="text-2xl mb-2">TLP_PROTOCOL</h2>
+            <p class="text-gray-500 text-xs mb-6">5 Pages: Header / Shaper / Matrix</p>
+            <p class="text-2xl font-bold mb-6 text-white">$1,200.00</p>
+            <button onclick="openCheckout()" class="w-full py-3 border border-[#00FF41] hover:bg-[#00FF41] hover:text-black transition">ACQUIRE</button>
+        </div>
+    </div>
+
+    <div id="checkout" class="hidden fixed inset-0 bg-black/95 z-[200] flex items-center justify-center p-4">
+        <div class="glass p-8 max-w-md w-full border-[#00FF41]">
+            <h3 class="text-xl mb-6">TRANSFER_DETAILS</h3>
+            <div class="space-y-4 text-sm mb-8">
+                <div class="bg-white/5 p-4 rounded">
+                    <p class="text-gray-500">HOLDER:</p>
+                    <p class="text-white">abdulkabir leecrown ademola</p>
+                </div>
+                <div class="bg-white/5 p-4 rounded">
+                    <p class="text-gray-500">BANK:</p>
+                    <p class="text-white">Lead Bank</p>
+                </div>
+                <div class="bg-white/5 p-4 rounded">
+                    <p class="text-gray-500">ACCOUNT:</p>
+                    <p class="text-[#00FF41] font-bold">216115919870</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-6">
+                <p class="text-xs mb-4">UPLOAD PROOF OF PAYMENT (SENDS TO MERCHANT)</p>
+                <form action="mailto:leesmart340@gmail.com" method="post" enctype="text/plain">
+                    <input type="file" class="text-xs mb-4">
+                    <button type="submit" class="w-full py-3 bg-white text-black font-bold uppercase">Submit Verification</button>
+                </form>
+                <button onclick="closeCheckout()" class="mt-4 text-xs text-red-500">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCheckout() { document.getElementById('checkout').classList.remove('hidden'); }
+        function closeCheckout() { document.getElementById('checkout').classList.add('hidden'); }
+    </script>
+</body>
+</html>
