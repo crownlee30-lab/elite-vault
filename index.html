@@ -3,107 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ELITE LOGIC | KINETIC_DIAMOND_VAULT</title>
+    <title>ELITE LOGIC | DIAMOND_KINETIC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100vh; overflow: hidden; perspective: 1000px; }
+        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100vh; overflow: hidden; perspective: 1200px; }
         .syne { font-family: 'Syne', sans-serif; }
 
-        /* 3D SPINNING VAULT CONTAINER */
-        .scene { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
-        
-        .diamond-vault {
-            width: 320px; height: 450px; position: relative;
+        /* DIAMOND SHAPE LOGIC */
+        .diamond-container {
+            width: 300px; height: 300px;
+            position: relative;
             transform-style: preserve-3d;
-            animation: rotateVault 12s infinite linear;
+            animation: rollingDiamond 10s infinite linear;
         }
 
-        @keyframes rotateVault {
-            0% { transform: rotateY(0deg) rotateX(5deg); }
-            50% { transform: rotateY(180deg) rotateX(-5deg); }
-            100% { transform: rotateY(360deg) rotateX(5deg); }
+        @keyframes rollingDiamond {
+            0% { transform: rotateY(0deg) rotateZ(45deg); }
+            100% { transform: rotateY(360deg) rotateZ(45deg); }
         }
 
-        /* GLASS FACES OF THE DIAMOND */
-        .vault-face {
+        .diamond-face {
             position: absolute; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            border-radius: 40px;
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 30px; text-align: center;
-            backface-visibility: hidden;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(20px);
+            border: 2px solid #D4AF37;
+            /* Clip path creates the actual diamond shape */
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 40px; text-align: center;
         }
 
-        /* BACK FACE FOR 3D EFFECT */
-        .vault-face.back { transform: rotateY(180deg); border-color: rgba(255,255,255,0.1); }
-
-        .gold-glow { 
-            color: #D4AF37; text-shadow: 0 0 20px rgba(212, 175, 55, 0.6); 
-            animation: pulseGlow 2s infinite alternate;
+        .content-overlay {
+            transform: rotateZ(-45deg); /* Re-aligns text inside the tilted diamond */
+            width: 140%;
         }
-        @keyframes pulseGlow { from { opacity: 0.7; } to { opacity: 1; } }
 
-        .btn-spin {
-            background: #fff; color: #000; font-weight: 900;
-            transition: 0.3s; animation: buttonPulse 3s infinite;
+        .gold-glow { color: #D4AF37; text-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+        
+        /* PULSING FLOW */
+        .kdp-badge {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #D4AF37;
+            padding: 2px 8px;
+            font-size: 7px;
+            border-radius: 4px;
+            animation: pulse 1.5s infinite;
         }
-        @keyframes buttonPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center">
 
-    <div class="scene">
-        <div class="fixed top-10 w-full overflow-hidden opacity-30 text-[8px] tracking-[1em] gold-glow italic">
-            <marquee>KDP_STABILIZATION_FRAMEWORK_LIVE... $200_ACQUISITION_READY... WELLS_FARGO_HUB_ACTIVE...</marquee>
-        </div>
+    <nav class="fixed top-6 w-full px-8 flex justify-between items-center z-50">
+        <div class="syne text-[9px] tracking-[0.6em] gold-glow uppercase">Elite_Logic</div>
+        <div class="kdp-badge uppercase">KDP_STABILIZE_ACTIVE</div>
+    </nav>
 
-        <div class="diamond-vault">
-            <div class="vault-face">
-                <div class="mb-4">
-                    <span class="text-[8px] text-gray-500 uppercase tracking-widest">Secure_Node</span>
-                    <h1 class="syne text-4xl gold-glow italic uppercase leading-none">ELITE<br>LOGIC</h1>
+    <div class="diamond-container">
+        <div class="diamond-face">
+            <div class="content-overlay">
+                <h1 class="syne text-3xl mb-2 italic gold-glow leading-none">THE<br>VAULT</h1>
+                <p class="text-[7px] text-gray-500 uppercase tracking-widest mb-4 italic">Diamond_Tier_Deployment</p>
+                
+                <div class="space-y-1 mb-6 text-[7px] text-gray-400 uppercase">
+                    <p>● KDP_STABILIZATION ($200)</p>
+                    <p>● SSL_V3_ENCRYPTION</p>
+                    <p>● XXS_CORE_ARCH</p>
                 </div>
 
-                <div class="space-y-3 mb-6 text-[8px] text-gray-400 uppercase tracking-tighter">
-                    <p class="border-b border-white/5 pb-1">● SSL_V3 ENCRYPTION</p>
-                    <p class="border-b border-white/5 pb-1">● XXS_CORE ARCHITECTURE</p>
-                    <p class="border-b border-white/5 pb-1 text-yellow-600">● KDP STABILIZATION ($200)</p>
-                </div>
-
-                <div class="flex gap-2 mb-6">
-                    <div class="flex-1 bg-white/5 p-2 rounded-xl border border-white/10">
-                        <p class="text-[6px] text-gray-600 uppercase">Intl</p>
-                        <p class="text-[8px]">Wells Fargo</p>
-                    </div>
-                    <div class="flex-1 bg-white/5 p-2 rounded-xl border border-white/10">
-                        <p class="text-[6px] text-gray-600 uppercase">Local</p>
-                        <p class="text-[8px]">Lead Bank</p>
-                    </div>
-                </div>
-
-                <a href="catalog.html" class="btn-spin block w-full py-4 rounded-2xl syne text-[10px] uppercase tracking-widest">
-                    Enter Vault
+                <a href="catalog.html" class="bg-white text-black py-3 px-6 rounded-full syne text-[9px] uppercase font-black tracking-widest hover:bg-yellow-600 transition">
+                    Acquire
                 </a>
-            </div>
-
-            <div class="vault-face back">
-                <h2 class="syne text-xl gold-glow">ENCRYPTED</h2>
-                <div class="w-12 h-12 border-4 border-yellow-600 border-t-transparent rounded-full animate-spin mx-auto my-6"></div>
-                <p class="text-[8px] text-gray-600 tracking-widest uppercase">Verifying Node...</p>
             </div>
         </div>
     </div>
 
-    <audio id="sfx" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
-    <script>
-        document.querySelector('.btn-spin').addEventListener('click', () => {
-            document.getElementById('sfx').play();
-        });
-    </script>
+    <div class="fixed bottom-10 w-full overflow-hidden opacity-20 text-[6px] tracking-[1em] uppercase italic">
+        <marquee scrollamount="3">KDP_STABILIZATION_FRAMEWORK_3_PAGE_CODE_BUNDLE_READY_FOR_DEPLOYMENT_WELLS_FARGO_AUTHORIZED</marquee>
+    </div>
+
 </body>
 </html>
