@@ -3,87 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIRTUAL_VAULT | Elite Code Assets</title>
+    <title>THE VAULT | GLOBAL_CORE</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-        body { background-color: #050505; color: #00FF41; font-family: 'Space Mono', monospace; }
-        .crt-line { background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 2px, 3px 100%; pointer-events: none; position: fixed; inset: 0; z-index: 100; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .scanline { width: 100%; height: 2px; background: rgba(0, 255, 65, 0.1); position: absolute; animation: scan 4s linear infinite; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        body { background: #000; color: #fff; font-family: 'Space Mono', monospace; overflow-x: hidden; }
+        .hero-font { font-family: 'Syncopate', sans-serif; }
+        
+        /* The Magic Background */
+        .grid-bg {
+            background-image: linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            perspective: 1000px;
+        }
+
+        .glow-text { text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+        
+        /* Floating Animation */
+        .float { animation: floating 6s ease-in-out infinite; }
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .gold-gradient {
+            background: linear-gradient(90deg, #D4AF37, #FFFFFF, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
     </style>
 </head>
-<body class="p-4 md:p-10">
-    <div class="crt-line"></div>
+<body class="grid-bg">
 
-    <nav class="flex justify-between items-center mb-20">
-        <div class="text-xl font-bold tracking-widest">[ VIRTUAL_VAULT ]</div>
-        <div class="text-xs text-gray-500">ENCRYPTED_SESSION_ACTIVE</div>
+    <div id="loader" class="fixed inset-0 z-[1000] bg-black flex flex-col items-center justify-center">
+        <div class="hero-font text-xs tracking-[1em] mb-4 animate-pulse">INITIALIZING_VAULT</div>
+        <div class="w-48 h-[2px] bg-gray-900 overflow-hidden">
+            <div class="w-full h-full bg-yellow-600 animate-[progress_2s_ease-in-out]"></div>
+        </div>
+    </div>
+
+    <nav class="fixed top-0 w-full z-[500] p-6 flex justify-between items-center backdrop-blur-md border-b border-white/5">
+        <div class="hero-font text-[10px] tracking-[0.5em] gold-gradient font-bold">VAULT.EXE</div>
+        <div class="flex space-x-6 text-[8px] uppercase tracking-widest">
+            <a href="catalog.html" class="hover:text-yellow-600 transition">Acquire</a>
+            <a href="infrastructure.html" class="hover:text-yellow-600 transition">Network</a>
+            <a href="portal.html" class="text-yellow-600 font-bold border border-yellow-600/30 px-3 py-1 rounded">Private_Login</a>
+        </div>
     </nav>
 
-    <header class="text-center mb-20">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 uppercase tracking-tighter">Proprietary Code Assets</h1>
-        <p class="text-gray-400 text-sm italic">Direct Acquisition via Lead Bank Transfer</p>
-    </header>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="glass p-8 rounded-xl hover:border-[#00FF41] transition duration-500 relative overflow-hidden group">
-            <div class="scanline opacity-0 group-hover:opacity-100"></div>
-            <h2 class="text-2xl mb-2">SSL_V3.bundle</h2>
-            <p class="text-gray-500 text-xs mb-6">3 Pages: Server Config / CSR / Pinning</p>
-            <p class="text-2xl font-bold mb-6 text-white">$499.00</p>
-            <button onclick="openCheckout()" class="w-full py-3 border border-[#00FF41] hover:bg-[#00FF41] hover:text-black transition">ACQUIRE</button>
-        </div>
-
-        <div class="glass p-8 rounded-xl border-[#00FF41]/30 border-2 relative overflow-hidden group">
-            <div class="scanline"></div>
-            <h2 class="text-2xl mb-2 text-white">XXS_FRAMEWORK</h2>
-            <p class="text-gray-400 text-xs mb-6">5 Pages: Kernel / Validator / Bridge</p>
-            <p class="text-2xl font-bold mb-6 text-white">$850.00</p>
-            <button onclick="openCheckout()" class="w-full py-3 bg-[#00FF41] text-black font-bold">ACQUIRE</button>
-        </div>
-
-        <div class="glass p-8 rounded-xl hover:border-[#00FF41] transition duration-500 relative overflow-hidden group">
-            <h2 class="text-2xl mb-2">TLP_PROTOCOL</h2>
-            <p class="text-gray-500 text-xs mb-6">5 Pages: Header / Shaper / Matrix</p>
-            <p class="text-2xl font-bold mb-6 text-white">$1,200.00</p>
-            <button onclick="openCheckout()" class="w-full py-3 border border-[#00FF41] hover:bg-[#00FF41] hover:text-black transition">ACQUIRE</button>
-        </div>
-    </div>
-
-    <div id="checkout" class="hidden fixed inset-0 bg-black/95 z-[200] flex items-center justify-center p-4">
-        <div class="glass p-8 max-w-md w-full border-[#00FF41]">
-            <h3 class="text-xl mb-6">TRANSFER_DETAILS</h3>
-            <div class="space-y-4 text-sm mb-8">
-                <div class="bg-white/5 p-4 rounded">
-                    <p class="text-gray-500">HOLDER:</p>
-                    <p class="text-white">abdulkabir leecrown ademola</p>
-                </div>
-                <div class="bg-white/5 p-4 rounded">
-                    <p class="text-gray-500">BANK:</p>
-                    <p class="text-white">Lead Bank</p>
-                </div>
-                <div class="bg-white/5 p-4 rounded">
-                    <p class="text-gray-500">ACCOUNT:</p>
-                    <p class="text-[#00FF41] font-bold">216115919870</p>
+    <section class="min-h-screen flex flex-col items-center justify-center px-6 pt-20">
+        <div class="float mb-12">
+            <div class="w-24 h-24 border-2 border-yellow-600/20 rounded-full flex items-center justify-center animate-[spin_10s_linear_infinite]">
+                <div class="w-16 h-16 border-2 border-yellow-600 rounded-full flex items-center justify-center animate-[spin_5s_linear_infinite_reverse]">
+                    <div class="w-4 h-4 bg-yellow-600 rounded-full shadow-[0_0_20px_#D4AF37]"></div>
                 </div>
             </div>
-            
-            <div class="border-t border-white/10 pt-6">
-                <p class="text-xs mb-4">UPLOAD PROOF OF PAYMENT (SENDS TO MERCHANT)</p>
-                <form action="mailto:leesmart340@gmail.com" method="post" enctype="text/plain">
-                    <input type="file" class="text-xs mb-4">
-                    <button type="submit" class="w-full py-3 bg-white text-black font-bold uppercase">Submit Verification</button>
-                </form>
-                <button onclick="closeCheckout()" class="mt-4 text-xs text-red-500">CANCEL</button>
+        </div>
+
+        <h1 class="hero-font text-4xl md:text-7xl text-center leading-none mb-8" data-aos="zoom-out">
+            PREMIUM_CODE<br><span class="gold-gradient italic">DISTRIBUTION</span>
+        </h1>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-20" data-aos="fade-up">
+            <div class="bg-white/5 px-6 py-2 rounded-full border border-white/10 text-[9px] uppercase tracking-widest font-bold">
+                USD Connection: Wells Fargo
+            </div>
+            <div class="bg-white/5 px-6 py-2 rounded-full border border-white/10 text-[9px] uppercase tracking-widest font-bold">
+                Local Hub: Lead Bank
             </div>
         </div>
-    </div>
+
+        <a href="catalog.html" class="group relative px-12 py-5 overflow-hidden rounded-full bg-white text-black font-black text-xs uppercase tracking-[0.3em] transition-all hover:pr-16">
+            <span class="relative z-10">Start Acquisition</span>
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all">→</span>
+        </a>
+    </section>
+
+    <section class="py-40 px-6 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div data-aos="fade-right">
+                <h3 class="hero-font text-xl mb-6 text-yellow-600">01 // AUTOMATED_DELIVERY</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Once your Wells Fargo or Lead Bank transfer is verified via our concierge, the encrypted file bundle is released to your private portal instantly.</p>
+            </div>
+            <div data-aos="fade-left">
+                <h3 class="hero-font text-xl mb-6 text-yellow-600">02 // GLOBAL_COMPLIANCE</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Supporting US, European, and African financial routes. Strategic intelligence assets optimized for high-performance enterprise integration.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="p-20 text-center border-t border-white/5">
+        <div class="hero-font text-[8px] text-gray-700 tracking-[1em]">OFFICIAL_VAULT_SYSTEM_2026</div>
+    </footer>
 
     <script>
-        function openCheckout() { document.getElementById('checkout').classList.remove('hidden'); }
-        function closeCheckout() { document.getElementById('checkout').classList.add('hidden'); }
+        // Hide loader after 2s
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                AOS.init();
+            }, 2000);
+        };
     </script>
 </body>
 </html>
