@@ -3,30 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACQUISITION SUCCESS | ELITE LOGIC</title>
+    <title>Acquisition Complete | Elite Logic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        .diamond-pulse {
-            width: 150px; height: 150px; border: 4px solid #D4AF37;
-            transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
-            animation: pulse 2s infinite alternate;
-        }
-        @keyframes pulse { from { transform: rotate(45deg) scale(1); opacity: 0.5; } to { transform: rotate(45deg) scale(1.1); opacity: 1; } }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
+        .packt-orange { background-color: #f26522; }
+        .packt-dark { background-color: #18181b; }
+        .text-packt { color: #f26522; }
     </style>
 </head>
-<body class="text-center px-6">
-    <div>
-        <div class="diamond-pulse mx-auto mb-16">
-            <span class="rotate-[-45deg] text-yellow-600 font-black text-2xl font-mono">OK</span>
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="max-w-xl w-full mx-6">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
+            <div class="packt-dark p-8 text-center">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white/10">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h1 class="text-white text-2xl font-black uppercase tracking-tight">Acquisition Complete</h1>
+                <p class="text-gray-400 text-xs mt-2 uppercase tracking-widest">Transaction Verified // Secure Node Active</p>
+            </div>
+
+            <div class="p-10">
+                <div class="bg-gray-50 rounded-lg p-6 mb-8 border border-gray-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Asset ID: KDP-200-STB</span>
+                        <span class="text-[10px] font-bold text-packt uppercase">Verified</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">KDP Stabilization Framework</h2>
+                    <p class="text-gray-500 text-sm leading-relaxed">Your 3-page proprietary codebase has been unlocked. Access is now authorized for global node deployment.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <a href="kdp-framework.html" class="block w-full text-center packt-orange text-white font-black py-4 rounded text-xs uppercase hover:bg-orange-700 transition shadow-lg shadow-orange-500/20">
+                        Download Code Files
+                    </a>
+                    <a href="https://wa.me/15739142195?text=My%20acquisition%20is%20complete.%20I%20need%20the%20license%20key." class="block w-full text-center border border-gray-300 text-gray-700 font-bold py-4 rounded text-xs uppercase hover:bg-gray-50 transition">
+                        Contact Concierge for License
+                    </a>
+                </div>
+            </div>
+
+            <div class="px-10 py-6 bg-gray-50 border-t border-gray-100 text-center">
+                <p class="text-[9px] text-gray-400 uppercase tracking-widest">Elite Logic Infrastructure © 2026. All Rights Reserved.</p>
+            </div>
         </div>
-        <h1 class="font-['Syne'] text-4xl italic gold-glow uppercase mb-4 tracking-tighter">Acquisition_Verified</h1>
-        <p class="text-[10px] text-gray-500 uppercase tracking-[0.5em] mb-12">KDP_STABILIZATION_FRAMEWORK_UNLOCKED</p>
         
-        <a href="kdp-framework.html" class="inline-block border border-white/20 px-12 py-4 text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition">
-            Access Code Repository
-        </a>
+        <div class="text-center mt-8">
+            <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-packt transition uppercase tracking-widest">← Back to Dashboard</a>
+        </div>
     </div>
+
 </body>
 </html>
