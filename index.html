@@ -3,85 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ELITE LOGIC | DIAMOND_KINETIC</title>
+    <title>ELITE LOGIC | THE DIAMOND SUITE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100vh; overflow: hidden; perspective: 1200px; }
+        body, html { margin: 0; padding: 0; background: #fdfbf7; color: #1a1a1a; font-family: 'Inter', sans-serif; overflow: hidden; height: 100vh; }
         .syne { font-family: 'Syne', sans-serif; }
 
-        /* DIAMOND SHAPE LOGIC */
-        .diamond-container {
-            width: 300px; height: 300px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rollingDiamond 10s infinite linear;
+        /* KINETIC DIAMOND BACKGROUND */
+        #bg-pattern {
+            position: fixed; top: 0; left: 0; width: 200%; height: 200%;
+            background-image: 
+                linear-gradient(45deg, #eee 25%, transparent 25%), 
+                linear-gradient(-45deg, #eee 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #eee 75%), 
+                linear-gradient(-45deg, transparent 75%, #eee 75%);
+            background-size: 80px 80px;
+            animation: moveGrid 20s linear infinite;
+            z-index: -1; opacity: 0.5;
         }
+        @keyframes moveGrid { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-        @keyframes rollingDiamond {
-            0% { transform: rotateY(0deg) rotateZ(45deg); }
-            100% { transform: rotateY(360deg) rotateZ(45deg); }
+        /* THE CENTRAL DIAMOND INTERFACE */
+        .diamond-ui {
+            width: 90vw; max-width: 400px; aspect-ratio: 1/1;
+            background: white; border: 4px solid #D4AF37;
+            transform: rotate(45deg); display: flex; align-items: center; justify-content: center;
+            box-shadow: 30px 30px 60px rgba(0,0,0,0.1), -10px -10px 30px rgba(255,255,255,0.8);
+            position: relative; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 6s ease-in-out infinite;
         }
+        @keyframes float { 0%, 100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(-20px); } }
 
-        .diamond-face {
-            position: absolute; width: 100%; height: 100%;
-            background: rgba(212, 175, 55, 0.05);
-            backdrop-filter: blur(20px);
-            border: 2px solid #D4AF37;
-            /* Clip path creates the actual diamond shape */
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 40px; text-align: center;
-        }
-
-        .content-overlay {
-            transform: rotateZ(-45deg); /* Re-aligns text inside the tilted diamond */
-            width: 140%;
-        }
-
-        .gold-glow { color: #D4AF37; text-shadow: 0 0 25px rgba(212, 175, 55, 0.8); }
+        .content-fix { transform: rotate(-45deg); text-align: center; width: 100%; padding: 20px; }
         
-        /* PULSING FLOW */
-        .kdp-badge {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid #D4AF37;
-            padding: 2px 8px;
-            font-size: 7px;
-            border-radius: 4px;
-            animation: pulse 1.5s infinite;
+        /* LIVELY ELEMENTS */
+        .gold-pill { background: #D4AF37; color: white; padding: 4px 12px; border-radius: 50px; font-size: 8px; font-weight: 900; letter-spacing: 2px; }
+        .btn-elite { background: #1a1a1a; color: #fff; padding: 15px 30px; border-radius: 0; transform: skewX(-10deg); transition: 0.3s; }
+        .btn-elite:hover { background: #D4AF37; transform: skewX(0deg) scale(1.05); }
+
+        #purchase-notif {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+            background: white; border: 1px solid #D4AF37; padding: 10px 20px;
+            border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: none; z-index: 1000; font-size: 11px;
         }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
     </style>
 </head>
 <body class="flex items-center justify-center">
 
-    <nav class="fixed top-6 w-full px-8 flex justify-between items-center z-50">
-        <div class="syne text-[9px] tracking-[0.6em] gold-glow uppercase">Elite_Logic</div>
-        <div class="kdp-badge uppercase">KDP_STABILIZE_ACTIVE</div>
+    <div id="bg-pattern"></div>
+
+    <div id="purchase-notif">
+        <span class="text-yellow-600 font-black uppercase tracking-tighter mr-2">● LIVE_ALERT:</span> 
+        <span id="notif-text" class="font-bold">User in Dubai purchased KDP Framework</span>
+    </div>
+
+    <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50">
+        <div class="syne text-xs tracking-[0.4em] font-black uppercase">Elite_Logic</div>
+        <div class="gold-pill uppercase">Node_Secure</div>
     </nav>
 
-    <div class="diamond-container">
-        <div class="diamond-face">
-            <div class="content-overlay">
-                <h1 class="syne text-3xl mb-2 italic gold-glow leading-none">THE<br>VAULT</h1>
-                <p class="text-[7px] text-gray-500 uppercase tracking-widest mb-4 italic">Diamond_Tier_Deployment</p>
-                
-                <div class="space-y-1 mb-6 text-[7px] text-gray-400 uppercase">
-                    <p>● KDP_STABILIZATION ($200)</p>
-                    <p>● SSL_V3_ENCRYPTION</p>
-                    <p>● XXS_CORE_ARCH</p>
-                </div>
-
-                <a href="catalog.html" class="bg-white text-black py-3 px-6 rounded-full syne text-[9px] uppercase font-black tracking-widest hover:bg-yellow-600 transition">
-                    Acquire
+    <div class="diamond-ui">
+        <div class="content-fix">
+            <h1 class="syne text-5xl font-black mb-2 leading-none uppercase tracking-tighter">Elite<br><span class="text-yellow-600">Logic</span></h1>
+            <p class="text-[9px] uppercase tracking-[0.4em] text-gray-400 mb-8">Premium Infrastructure // 2026</p>
+            
+            <div class="space-y-4 mb-10">
+                <a href="kdp-framework.html" class="block">
+                    <div class="border-2 border-yellow-600 p-3 hover:bg-yellow-50 transition cursor-pointer">
+                        <p class="text-[8px] font-black text-yellow-600 uppercase mb-1">Exclusive Asset</p>
+                        <p class="text-[10px] font-bold">KDP STABILIZATION ($200)</p>
+                    </div>
                 </a>
             </div>
+
+            <a href="catalog.html" class="btn-elite block syne text-[10px] uppercase tracking-widest font-black">
+                Access Collection
+            </a>
         </div>
     </div>
 
-    <div class="fixed bottom-10 w-full overflow-hidden opacity-20 text-[6px] tracking-[1em] uppercase italic">
-        <marquee scrollamount="3">KDP_STABILIZATION_FRAMEWORK_3_PAGE_CODE_BUNDLE_READY_FOR_DEPLOYMENT_WELLS_FARGO_AUTHORIZED</marquee>
+    <div class="fixed bottom-10 w-full overflow-hidden whitespace-nowrap opacity-40">
+        <div class="inline-block animate-[marquee_30s_linear_infinite] text-[10px] font-black uppercase tracking-[0.5em]">
+            WELLS_FARGO_CONNECTED... LEAD_BANK_HUB_ACTIVE... KDP_STABILIZATION_FRAMEWORK_LOADED... 3_PAGE_CODE_BUNDLE_READY...
+        </div>
     </div>
 
+    <script>
+        // PURCHASE NOTIFICATION LOGIC (60 SECONDS)
+        const cities = ["London", "New York", "Dubai", "Lagos", "Singapore"];
+        const products = ["KDP Framework", "SSL_V3 Encryption", "XXS_Core"];
+        
+        function showNotif() {
+            const notif = document.getElementById('purchase-notif');
+            const city = cities[Math.floor(Math.random()*cities.length)];
+            const prod = products[Math.floor(Math.random()*products.length)];
+            document.getElementById('notif-text').innerText = `User in ${city} purchased ${prod}`;
+            notif.style.display = 'block';
+            setTimeout(() => { notif.style.display = 'none'; }, 6000);
+        }
+        
+        setInterval(showNotif, 20000); // Trigger notification
+        setTimeout(showNotif, 3000); // Initial trigger
+    </script>
 </body>
 </html>
