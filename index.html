@@ -2,96 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ELITE_LOGIC | VAULT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Logic | Professional Systems</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
-        .syne { font-family: 'Syne', sans-serif; }
-        
-        /* CONTAINER FIX FOR MOBILE SCREEN */
-        .vault-card {
-            width: 92%; max-width: 380px; margin: 20px auto;
-            background: #0a0a0a; border: 1px solid #222;
-            border-radius: 40px; padding: 30px 20px;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.05);
-        }
-
-        .gold-glow { color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
-        .btn-main { background: #fff; color: #000; border-radius: 20px; font-weight: 900; letter-spacing: 0.2em; }
-        
-        /* BANK MODAL */
-        #payment-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
-        .bank-card { background: #111; border: 1px solid #D4AF37; padding: 25px; border-radius: 25px; width: 100%; max-width: 340px; }
+        body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #18181b; }
+        .packt-orange { background-color: #f26522; }
+        .packt-dark { background-color: #18181b; }
     </style>
 </head>
-<body class="flex flex-col items-center">
+<body>
 
-    <header class="w-full p-6 flex justify-between items-center">
-        <div class="syne text-sm tracking-[0.3em] gold-glow">ELITE_LOGIC</div>
-        <button onclick="window.open('https://wa.me/15739142195')" class="text-[9px] border border-gray-700 px-4 py-2 rounded-full uppercase tracking-widest text-gray-400">Concierge</button>
+    <nav class="packt-dark text-white py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <div class="font-black text-xl tracking-tighter uppercase">ELITE<span class="text-[#f26522]">LOGIC</span></div>
+        <a href="https://wa.me/15739142195" class="bg-white/10 hover:bg-[#f26522] px-4 py-2 rounded text-[10px] font-bold uppercase tracking-widest transition">Concierge Support</a>
+    </nav>
+
+    <div id="ticker" class="bg-white border-l-4 border-green-500 shadow-lg p-4 m-4 rounded hidden md:block max-w-xs fixed top-20 right-4 z-40">
+        <p id="ticker-text" class="text-xs font-bold text-gray-800"></p>
+    </div>
+
+    <header class="packt-dark text-white pt-24 pb-32 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight italic uppercase">Master Your <br><span class="text-[#f26522]">Infrastructure</span></h1>
+            <p class="text-gray-400 text-lg mb-12">Secure, scalable, and verified codebases for elite global developers. Access high-traffic node stabilization and encrypted routing logic.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="catalog.html" class="packt-orange py-4 px-12 rounded font-black uppercase text-sm hover:scale-105 transition">Explore Collection</a>
+                <a href="https://wa.me/15739142195" class="bg-white text-black py-4 px-12 rounded font-black uppercase text-sm">View Free Assets</a>
+            </div>
+        </div>
     </header>
 
-    <div class="vault-card text-center border-[#D4AF37]/30">
-        <p class="text-[9px] tracking-[0.4em] text-gray-600 uppercase mb-4">Secure Infrastructure</p>
-        <h1 class="syne text-6xl gold-glow italic uppercase mb-8">VAULT</h1>
-        
-        <div class="text-left space-y-4 mb-10 text-[10px] text-gray-400 uppercase tracking-widest pl-4">
-            <p onclick="openPay('kdp')" class="cursor-pointer hover:text-white">● KDP STABILIZATION ($200)</p>
-            <p onclick="openPay('xxs')" class="cursor-pointer hover:text-white">● XXS/TLS ARCHITECTURE ($300)</p>
-            <p onclick="openPay('tlp')" class="cursor-pointer hover:text-white">● TLP_PRO GLOBAL ($500)</p>
-        </div>
-
-        <div class="grid grid-cols-2 gap-3 mb-10">
-            <div onclick="openPay('wells')" class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800 cursor-pointer">
-                <p class="text-[7px] text-gray-600 uppercase mb-1">Intl Route</p>
-                <p class="text-[10px] font-bold">Wells Fargo</p>
-            </div>
-            <div onclick="openPay('lead')" class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800 cursor-pointer">
-                <p class="text-[7px] text-gray-600 uppercase mb-1">Local Route</p>
-                <p class="text-[10px] font-bold text-yellow-600">Lead Bank</p>
-            </div>
-        </div>
-
-        <a href="catalog.html" class="btn-main block py-5 text-[11px] uppercase">Access Collection</a>
-    </div>
-
-    <div id="payment-overlay">
-        <div class="bank-card">
-            <h2 id="bank-name" class="syne text-yellow-600 mb-6 uppercase text-center italic tracking-widest">Bank Details</h2>
-            <div id="bank-info" class="text-[11px] text-gray-300 space-y-5 mb-8 font-mono"></div>
-            <button onclick="closePay()" class="w-full py-3 border border-gray-800 rounded-xl text-[9px] uppercase text-gray-500">Close Secure Route</button>
-        </div>
-    </div>
-
     <script>
-        function openPay(type) {
-            const overlay = document.getElementById('payment-overlay');
-            const info = document.getElementById('bank-info');
-            const name = document.getElementById('bank-name');
-            overlay.style.display = 'flex';
-
-            if(type === 'wells' || type === 'tlp') {
-                name.innerText = "Wells Fargo";
-                info.innerHTML = `
-                    <div><span class="text-gray-600">BANK NAME:</span><br>WELLS FARGO BANK, N.A.</div>
-                    <div><span class="text-gray-600">ACCOUNT NAME:</span><br>ELITE LOGIC GLOBAL</div>
-                    <div><span class="text-gray-600">ACCOUNT NUMBER:</span><br><span class="text-yellow-600">40630253350827460</span></div>
-                    <div><span class="text-gray-600">ROUTING (ABA):</span><br>121000248</div>
-                    <div><span class="text-gray-600">SWIFT CODE:</span><br>WFBIUS6SXXX</div>
-                `;
-            } else {
-                name.innerText = "Lead Bank";
-                info.innerHTML = `
-                    <div><span class="text-gray-600">BANK NAME:</span><br>LEAD BANK</div>
-                    <div><span class="text-gray-600">ACCOUNT NAME:</span><br>ELITE LOGIC SYSTEMS</div>
-                    <div><span class="text-gray-600">ACCOUNT NUMBER:</span><br><span class="text-yellow-600">216115919870</span></div>
-                    <div><span class="text-gray-600">TYPE:</span><br>BUSINESS CHECKING</div>
-                `;
-            }
-        }
-        function closePay() { document.getElementById('payment-overlay').style.display = 'none'; }
+        const msgs = ["User in London bought KDP Framework", "User in Dubai acquired TLP Global", "User in Singapore secured XXS_Core"];
+        setInterval(() => {
+            const t = document.getElementById('ticker');
+            document.getElementById('ticker-text').innerText = msgs[Math.floor(Math.random()*msgs.length)];
+            t.classList.remove('hidden');
+            setTimeout(() => t.classList.add('hidden'), 5000);
+        }, 15000);
     </script>
 </body>
 </html>
