@@ -3,87 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COLLECTION | The Vault</title>
+    <title>COLLECTION | Elite Logic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; }
+        body { background: #fdfbf7; color: #1a1a1a; font-family: sans-serif; }
         .syne { font-family: 'Syne', sans-serif; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gold-border { border-color: rgba(212, 175, 55, 0.3); }
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; opacity: 0.4; }
+        .diamond-card { 
+            background: white; border: 2px solid #D4AF37; 
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .diamond-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212,175,55,0.2); }
     </style>
 </head>
 <body class="p-6 md:p-20">
-    <canvas id="bg-canvas"></canvas>
-
     <div class="max-w-6xl mx-auto">
-        <header class="mb-16 flex justify-between items-end">
-            <div>
-                <h1 class="syne text-4xl md:text-6xl italic uppercase">The_Collection</h1>
-                <p class="text-[10px] text-yellow-600 tracking-[0.5em] mt-2">ACTIVE_ASSETS // VERIFIED</p>
-            </div>
-            <a href="index.html" class="text-[10px] text-gray-500 hover:text-white transition uppercase tracking-widest">← Back</a>
+        <header class="mb-16">
+            <h1 class="syne text-5xl uppercase italic tracking-tighter">The_Assets</h1>
+            <p class="text-yellow-600 font-bold text-xs tracking-[0.5em] mt-2">SECURE_DISTRIBUTION_CENTRAL</p>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="glass p-10 rounded-[40px] hover:gold-border transition duration-500">
-                <span class="text-[9px] text-gray-600 mb-4 block uppercase">Tier_01</span>
-                <h2 class="syne text-2xl mb-6 italic">SSL_V3</h2>
-                <div class="text-4xl font-black mb-10">$200.00</div>
-                <button onclick="openPay()" class="w-full py-4 bg-white text-black rounded-2xl syne text-[10px] uppercase tracking-widest hover:bg-yellow-600 hover:text-white transition">Acquire</button>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
+                <div>
+                    <span class="bg-yellow-600 text-white text-[8px] px-2 py-1 font-black uppercase">Premier Asset</span>
+                    <h2 class="syne text-2xl mt-4 mb-4 uppercase italic">KDP_Stabilize</h2>
+                    <p class="text-[10px] text-gray-500 leading-relaxed uppercase tracking-widest">
+                        Three-page stabilization framework for high-traffic nodes and automated bridge security.
+                    </p>
+                </div>
+                <div>
+                    <div class="text-3xl font-black mb-6">$200.00</div>
+                    <a href="kdp-framework.html" class="block w-full text-center py-4 bg-black text-white text-[10px] font-black uppercase tracking-widest hover:bg-yellow-600 transition">View Code File</a>
+                </div>
             </div>
 
-            <div class="glass p-10 rounded-[40px] border-yellow-600/20 shadow-[0_0_40px_rgba(212,175,55,0.05)]">
-                <span class="text-[9px] text-yellow-600 mb-4 block uppercase font-bold">Recommended</span>
-                <h2 class="syne text-2xl mb-6 italic">XXS_CORE</h2>
-                <div class="text-4xl font-black mb-10">$450.00</div>
-                <button onclick="openPay()" class="w-full py-4 bg-white text-black rounded-2xl syne text-[10px] uppercase tracking-widest hover:bg-yellow-600 hover:text-white transition">Acquire</button>
+            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
+                <h2 class="syne text-2xl uppercase italic">SSL_V3_Enc</h2>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Standard secure socket layer logic for private routing.</p>
+                <div class="text-3xl font-black mb-6">$150.00</div>
+                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
             </div>
 
-            <div class="glass p-10 rounded-[40px]">
-                <span class="text-[9px] text-gray-600 mb-4 block uppercase">Tier_03</span>
-                <h2 class="syne text-2xl mb-6 italic">TLP_PRO</h2>
-                <div class="text-4xl font-black mb-10">$750.00</div>
-                <button onclick="openPay()" class="w-full py-4 bg-white text-black rounded-2xl syne text-[10px] uppercase tracking-widest hover:bg-yellow-600 hover:text-white transition">Acquire</button>
+            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
+                <h2 class="syne text-2xl uppercase italic">XXS_Core</h2>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Core architecture for cross-node synchronization.</p>
+                <div class="text-3xl font-black mb-6">$450.00</div>
+                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
             </div>
+
+            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
+                <h2 class="syne text-2xl uppercase italic">TLP_Pro</h2>
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Global deployment suite with multi-bank bridging.</p>
+                <div class="text-3xl font-black mb-6">$750.00</div>
+                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
+            </div>
+
         </div>
     </div>
-
-    <div id="pay" class="hidden fixed inset-0 bg-black/98 z-[1000] flex items-center justify-center p-6 backdrop-blur-3xl">
-        <div class="max-w-xl w-full glass p-10 rounded-[40px]">
-            <div class="flex space-x-4 mb-8">
-                <button onclick="setBank('intl')" id="b1" class="flex-1 py-3 border-b-2 border-yellow-600 text-[10px] font-bold uppercase tracking-widest">Wells Fargo</button>
-                <button onclick="setBank('local')" id="b2" class="flex-1 py-3 border-b-2 border-transparent text-gray-600 text-[10px] font-bold uppercase tracking-widest">Lead Bank</button>
-            </div>
-
-            <div id="intl" class="space-y-4 mb-10">
-                <div class="p-4 bg-white/5 rounded-2xl"><p class="text-[8px] text-gray-500 uppercase">Account</p><p class="text-sm font-bold text-yellow-600">40630253350827460</p></div>
-                <div class="p-4 bg-white/5 rounded-2xl"><p class="text-[8px] text-gray-500 uppercase">Routing</p><p class="text-sm">121000248</p></div>
-                <div class="p-4 bg-white/5 rounded-2xl"><p class="text-[8px] text-gray-500 uppercase">Swift</p><p class="text-sm">WFBIUS6SXXX</p></div>
-            </div>
-
-            <div id="local" class="hidden space-y-4 mb-10">
-                <div class="p-4 bg-white/5 rounded-2xl"><p class="text-[8px] text-gray-500 uppercase">Account</p><p class="text-sm font-bold text-yellow-600">216115919870</p></div>
-                <div class="p-4 bg-white/5 rounded-2xl"><p class="text-[8px] text-gray-500 uppercase">Bank</p><p class="text-sm">Lead Bank</p></div>
-            </div>
-
-            <form action="mailto:leesmart340@gmail.com" method="post" enctype="multipart/form-data">
-                <input type="file" class="text-[10px] mb-6 block w-full text-gray-500">
-                <button type="submit" class="w-full py-4 bg-white text-black rounded-2xl syne text-[10px] uppercase font-black">Submit Receipt</button>
-            </form>
-            <button onclick="document.getElementById('pay').classList.add('hidden')" class="w-full mt-4 text-[9px] text-gray-700 uppercase">Return</button>
-        </div>
-    </div>
-
-    <script>
-        function openPay() { document.getElementById('pay').classList.remove('hidden'); }
-        function setBank(t) {
-            document.getElementById('intl').classList.toggle('hidden', t !== 'intl');
-            document.getElementById('local').classList.toggle('hidden', t !== 'local');
-            document.getElementById('b1').classList.toggle('border-yellow-600', t === 'intl');
-            document.getElementById('b2').classList.toggle('border-yellow-600', t === 'local');
-        }
-    </script>
 </body>
 </html>
