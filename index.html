@@ -3,77 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Logic | Professional Infrastructure</title>
+    <title>ELITE LOGIC | Infrastructure Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; }
-        .packt-orange { background-color: #f26522; }
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
         .packt-dark { background-color: #18181b; }
-        .text-packt { color: #f26522; }
+        .packt-orange { background-color: #f26522; }
+        .success-ticker { position: fixed; top: 70px; right: 20px; z-index: 100; display: none; }
     </style>
 </head>
 <body>
 
-    <nav class="packt-dark text-white py-3 px-6 flex justify-between items-center sticky top-0 z-50 shadow-lg">
-        <div class="flex items-center space-x-2">
-            <span class="font-black text-xl tracking-tighter">ELITE<span class="text-packt">LOGIC</span></span>
+    <div id="ticker" class="success-ticker bg-white border-l-4 border-green-500 shadow-xl p-4 rounded-r-lg max-w-xs animate-bounce">
+        <p class="text-[10px] font-bold text-gray-400 uppercase">Live Acquisition</p>
+        <p id="ticker-msg" class="text-xs font-black text-gray-800"></p>
+    </div>
+
+    <nav class="packt-dark text-white py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+        <div class="font-black text-xl tracking-tighter">ELITE<span class="text-[#f26522]">LOGIC</span></div>
+        <div class="flex items-center space-x-6">
+            <div class="relative cursor-pointer" onclick="location.href='catalog.html'">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span class="absolute -top-2 -right-2 bg-[#f26522] text-white text-[10px] px-1.5 rounded-full font-bold">3</span>
+            </div>
+            <a href="https://wa.me/15739142195" class="text-xs font-bold uppercase border border-white/20 px-3 py-1 hover:bg-white/10 transition">Concierge (Optional)</a>
         </div>
-        <a href="https://wa.me/15739142195?text=Hello%20Concierge,%20I%20require%20technical%20assistance." class="flex items-center space-x-2 bg-white/10 hover:bg-packt-orange transition px-4 py-2 rounded text-xs font-bold uppercase tracking-widest">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-4 h-4" alt="">
-            <span>Concierge Support</span>
-        </a>
     </nav>
 
-    <header class="packt-dark text-white pt-20 pb-32 px-6 text-center border-b border-white/10">
-        <div class="max-w-4xl mx-auto">
-            <span class="text-packt font-bold uppercase tracking-[0.3em] text-xs mb-4 block">Premium Asset Distribution</span>
-            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Professional Technical <br>Infrastructure & Frameworks</h1>
-            <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">Secure, scalable, and verified codebases for elite global developers. Access high-traffic node stabilization and encrypted routing logic.</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="catalog.html" class="packt-orange hover:bg-orange-700 text-white font-bold py-4 px-10 rounded transition uppercase text-sm">Explore Collection</a>
-                <a href="#featured" class="bg-white hover:bg-gray-100 text-black font-bold py-4 px-10 rounded transition uppercase text-sm">View Free Assets</a>
+    <section class="packt-dark text-white py-24 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1">
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-none italic uppercase">Master Your <br><span class="text-[#f26522]">Infrastructure</span></h1>
+                <p class="text-gray-400 text-lg mb-8">Access the most powerful TLP, KDP, and XXS Frameworks in the global market. Verified node stabilization for professional deployments.</p>
+                <button onclick="location.href='catalog.html'" class="packt-orange py-4 px-10 rounded font-black uppercase text-sm hover:scale-105 transition">Start Acquisition</button>
             </div>
-        </div>
-    </header>
-
-    <section id="featured" class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="flex justify-between items-end mb-12">
-            <div>
-                <h2 class="text-3xl font-black text-gray-900">Featured Releases</h2>
-                <p class="text-gray-500 mt-2">Latest technical deployments available for immediate acquisition.</p>
-            </div>
-            <div class="hidden md:block">
-                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">SALE ENDS IN: <span class="text-packt">21h : 59m : 54s</span></div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">
-                <div class="h-48 packt-dark flex items-center justify-center p-10">
-                    <div class="border-4 border-packt-orange p-4 text-white font-black text-2xl rotate-3">KDP_CORE</div>
+            <div class="flex-1 bg-white/5 border border-white/10 p-8 rounded-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Trending Now</span>
+                    <span class="text-[#f26522] text-xs font-bold animate-pulse">● LIVE</span>
                 </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-bold text-gray-400 uppercase">Framework // $200.00</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4">KDP Stabilization Framework</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Three-page proprietary code bundle for high-traffic node stabilization and TLP_PRO verification.</p>
-                    <a href="catalog.html" class="block text-center packt-orange text-white font-black py-3 rounded text-xs uppercase hover:bg-orange-600 transition">Acquire Asset</a>
-                </div>
-            </div>
-
-            <div class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-2xl transition duration-300">
-                <div class="h-48 bg-gray-800 flex items-center justify-center p-10">
-                    <div class="border-4 border-gray-600 p-4 text-white font-black text-2xl -rotate-3">SSL_V3</div>
-                </div>
-                <div class="p-6">
-                    <span class="text-[10px] font-bold text-gray-400 uppercase">Security // $450.00</span>
-                    <h3 class="text-xl font-bold mt-2 mb-4">Encrypted SSL_V3 Routing</h3>
-                    <p class="text-gray-600 text-sm mb-6 leading-relaxed">Advanced encryption protocols for secure data bridging between international bank nodes.</p>
-                    <a href="catalog.html" class="block text-center border border-packt-orange text-packt font-black py-3 rounded text-xs uppercase hover:bg-packt-orange hover:text-white transition">Acquire Asset</a>
+                <div class="space-y-4">
+                    <div class="flex justify-between p-3 bg-white/5 border-l-2 border-[#f26522]">
+                        <span class="text-xs">KDP_Stabilizer.exe</span>
+                        <span class="text-xs font-bold">$200</span>
+                    </div>
+                    <div class="flex justify-between p-3 bg-white/5 border-l-2 border-white/20">
+                        <span class="text-xs">TLP_Global_Asset.v2</span>
+                        <span class="text-xs font-bold">$500</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        const msgs = ["User in Dubai bought TLP File", "User in London bought KDP Framework", "User in Singapore bought XXS/TLS"];
+        setInterval(() => {
+            const t = document.getElementById('ticker');
+            document.getElementById('ticker-msg').innerText = msgs[Math.floor(Math.random()*msgs.length)];
+            t.style.display = 'block';
+            setTimeout(() => { t.style.display = 'none'; }, 4000);
+        }, 12000);
+    </script>
 </body>
 </html>
