@@ -3,139 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ELITE LOGIC | 3D_ULTIMATE</title>
+    <title>ELITE LOGIC | THE OBSIDIAN VAULT</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100%; width: 100%; overflow: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100vh; overflow: hidden; }
         .syne { font-family: 'Syne', sans-serif; }
         
-        /* THE 3D ANIMATED WALLPAPER CANVAS */
-        #canvas3d { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        /* 3D WEBGL CONTAINER */
+        #canvas-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.6; }
 
-        /* MOBILE-FIRST RESPONSIVE CARDS */
-        .main-container { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; }
+        /* LUXURY UI LAYER */
+        .content-layer { position: relative; z-index: 10; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 30px 20px; }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(25px);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 30px;
-            padding: 30px 20px;
+            border-radius: 40px;
+            padding: 40px 25px;
             width: 100%;
-            max-width: 350px; /* Perfect for iPhone/Android */
-            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            max-width: 360px;
+            margin: auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .gold-glow { color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
-        
-        /* LIVE COUNTER - MOBILE OPTIMIZED */
-        #notification {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 320px; background: rgba(10,10,10,0.9);
-            border: 1px solid #D4AF37; padding: 10px; border-radius: 12px;
-            display: none; z-index: 1000; font-size: 10px;
+        .gold-gradient {
+            background: linear-gradient(90deg, #D4AF37, #f3cf7a, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
         }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        /* SOUND FEEDBACK CLASSES */
-        .btn-active:active { transform: scale(0.95); background: #D4AF37; }
+        /* KINETIC ACTIVITY TICKER */
+        .ticker { position: fixed; top: 80px; width: 100%; overflow: hidden; white-space: nowrap; font-size: 8px; color: rgba(212,175,55,0.4); text-transform: uppercase; letter-spacing: 3px; }
+        .ticker-inner { display: inline-block; animation: ticker 20s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        .btn-luxury {
+            background: #fff; color: #000; font-weight: 900;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+        .btn-luxury:active { transform: scale(0.9) rotate(-1deg); background: #D4AF37; color: #fff; }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas3d"></canvas>
+    <div id="canvas-container"></div>
 
-    <div id="notification">
-        <span class="text-yellow-600 font-bold uppercase tracking-tighter">● LIVE_ACQUISITION:</span> 
-        <span id="notif-text" class="text-white">User in Dubai purchased XXS_CORE</span>
-    </div>
-
-    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50">
-        <div class="syne text-[10px] tracking-[0.4em] gold-glow">ELITE_LOGIC</div>
-        <a href="https://wa.me/15739142195" class="text-[9px] border border-yellow-600/30 px-4 py-2 rounded-full uppercase">Concierge</a>
-    </nav>
-
-    <div class="main-container">
-        <div class="glass-card">
-            <div class="mb-6">
-                <span class="text-[8px] text-gray-500 uppercase tracking-[0.5em]">Global Infrastructure</span>
-                <h1 class="syne text-4xl mt-2 gold-glow uppercase italic">Elite<br>Logic</h1>
-            </div>
-
-            <p class="text-[9px] text-gray-400 uppercase tracking-widest leading-loose mb-8">
-                Proprietary code bundles.<br>Verified via Wells Fargo & Lead Bank.
-            </p>
-
-            <div class="space-y-3 mb-8">
-                <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex justify-between items-center">
-                    <span class="text-[8px] text-gray-500 uppercase">Intl Route</span>
-                    <span class="text-[10px] font-bold">Wells Fargo</span>
-                </div>
-                <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex justify-between items-center">
-                    <span class="text-[8px] text-gray-500 uppercase">Local Route</span>
-                    <span class="text-[10px] font-bold">Lead Bank</span>
-                </div>
-            </div>
-
-            <a href="catalog.html" onclick="playClick()" class="btn-active block w-full py-4 bg-white text-black rounded-xl syne text-xs uppercase font-black tracking-widest transition-all">
-                Enter Collection
-            </a>
+    <div class="ticker">
+        <div class="ticker-inner">
+            ACTIVE_ENCRYPTION_STREAM... VERIFYING_WELLS_FARGO_NODE... LEAD_BANK_AUTHORIZED... ASSET_RELEASE_READY... 
         </div>
     </div>
 
-    <audio id="click-sfx" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    <div class="content-layer">
+        <nav class="flex justify-between items-center">
+            <div class="syne text-[10px] tracking-[0.5em] gold-gradient">ELITE_LOGIC</div>
+            <a href="https://wa.me/15739142195" class="text-[8px] bg-white/5 border border-white/10 px-4 py-2 rounded-full uppercase tracking-widest">Concierge</a>
+        </nav>
+
+        <div class="glass-card">
+            <div class="mb-8">
+                <p class="text-[8px] text-gray-500 uppercase tracking-[0.6em] mb-2">Secure Infrastructure</p>
+                <h1 class="syne text-5xl italic leading-tight gold-gradient">VAULT</h1>
+            </div>
+
+            <div class="space-y-4 mb-10 text-[9px] text-gray-400 leading-relaxed tracking-wide">
+                <p>● PREMIUM SSL_V3 ENCRYPTION</p>
+                <p>● XXS_CORE ARCHITECTURE</p>
+                <p>● TLP_PRO GLOBAL DEPLOYMENT</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 mb-10">
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                    <p class="text-[7px] text-gray-600 mb-1 uppercase">Intl Route</p>
+                    <p class="text-[9px] font-bold">Wells Fargo</p>
+                </div>
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/5">
+                    <p class="text-[7px] text-gray-600 mb-1 uppercase">Local Route</p>
+                    <p class="text-[9px] font-bold text-yellow-600">Lead Bank</p>
+                </div>
+            </div>
+
+            <a href="catalog.html" class="btn-luxury block w-full py-5 rounded-2xl syne text-[10px] uppercase tracking-[0.3em] text-center">
+                Access Collection
+            </a>
+        </div>
+
+        <footer class="text-center">
+            <p class="text-[7px] text-gray-700 tracking-[1em] uppercase">Private Intelligence // 2026</p>
+        </footer>
+    </div>
 
     <script>
-        // 3D ANIMATED LOGO WALLPAPER SCRIPT
-        const canvas = document.getElementById('canvas3d');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+        // THREE.JS LUXURY 3D BACKGROUND
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(renderer.domElement);
 
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            for(let i=0; i<60; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2 + 1,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.5
-                });
-            }
+        // CREATE 3D OBJECT (Obsidian Shard)
+        const geometry = new THREE.IcosahedronGeometry(2, 0);
+        const material = new THREE.MeshPhongMaterial({ 
+            color: 0xD4AF37, 
+            wireframe: true, 
+            emissive: 0xD4AF37,
+            emissiveIntensity: 0.2
+        });
+        const shard = new THREE.Mesh(geometry, material);
+        scene.add(shard);
+
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+        camera.position.z = 5;
+
+        // ANIMATION LOOP
+        function animate() {
+            requestAnimationFrame(animate);
+            shard.rotation.x += 0.005;
+            shard.rotation.y += 0.005;
+            renderer.render(scene, camera);
         }
+        
+        // RESPONSIVE RESIZE
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
 
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#D4AF37';
-            particles.forEach(p => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-                ctx.fill();
-            });
-            requestAnimationFrame(draw);
-        }
-
-        init(); draw();
-        window.addEventListener('resize', init);
-
-        // NOTIFICATION LOGIC
-        const cities = ["London", "New York", "Dubai", "Lagos", "Paris"];
-        const products = ["SSL_V3", "XXS_CORE", "TLP_PRO"];
-        function showNotif() {
-            const notif = document.getElementById('notification');
-            document.getElementById('notif-text').innerText = `User in ${cities[Math.floor(Math.random()*cities.length)]} purchased ${products[Math.floor(Math.random()*products.length)]}`;
-            notif.style.display = 'block';
-            setTimeout(() => { notif.style.display = 'none'; }, 4000);
-        }
-        setInterval(showNotif, 20000);
-        function playClick() { document.getElementById('click-sfx').play(); }
+        animate();
     </script>
 </body>
 </html>
