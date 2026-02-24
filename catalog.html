@@ -2,65 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COLLECTION | Elite Logic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE COLLECTION | ELITE LOGIC</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbf7; color: #1a1a1a; font-family: sans-serif; }
+        body { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
         .syne { font-family: 'Syne', sans-serif; }
-        .diamond-card { 
-            background: white; border: 2px solid #D4AF37; 
-            transition: 0.4s; position: relative; overflow: hidden;
+        
+        /* 3D GLASS CARD EFFECT */
+        .glass-diamond {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .diamond-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212,175,55,0.2); }
+        .glass-diamond:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #D4AF37;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-glow { color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+        
+        /* PAYMENT MODAL */
+        #payment-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
     </style>
 </head>
-<body class="p-6 md:p-20">
-    <div class="max-w-6xl mx-auto">
-        <header class="mb-16">
-            <h1 class="syne text-5xl uppercase italic tracking-tighter">The_Assets</h1>
-            <p class="text-yellow-600 font-bold text-xs tracking-[0.5em] mt-2">SECURE_DISTRIBUTION_CENTRAL</p>
-        </header>
+<body class="p-6 md:p-16">
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <header class="max-w-6xl mx-auto mb-16 flex justify-between items-end">
+        <div>
+            <h1 class="syne text-4xl md:text-6xl italic uppercase gold-glow leading-none">The_Assets</h1>
+            <p class="text-[9px] text-gray-500 tracking-[0.6em] mt-4 uppercase">Verified // 2026_Distribution</p>
+        </div>
+        <a href="index.html" class="text-[10px] text-gray-400 hover:text-white transition uppercase tracking-widest border-b border-white/10 pb-1">← Return</a>
+    </header>
+
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="glass-diamond p-8 flex flex-col justify-between h-[500px] border-2 border-yellow-600/40">
+            <div>
+                <span class="bg-yellow-600 text-black text-[8px] px-2 py-1 font-black uppercase rounded">Top Rated</span>
+                <h2 class="syne text-2xl mt-6 gold-glow uppercase italic">KDP_Stabilize</h2>
+                <p class="text-[10px] text-gray-400 mt-4 leading-relaxed uppercase tracking-widest">
+                    The 3-page proprietary framework for high-traffic node stabilization and payment bridge security.
+                </p>
+            </div>
+            <div>
+                <div class="text-4xl font-black mb-6">$200.00</div>
+                <a href="kdp-framework.html" class="block w-full text-center py-4 bg-white text-black text-[10px] font-black uppercase hover:bg-yellow-600 hover:text-white transition">View Code Framework</a>
+            </div>
+        </div>
+
+        <div class="glass-diamond p-8 flex flex-col justify-between h-[500px]">
+            <h2 class="syne text-2xl gold-glow uppercase italic">SSL_V3_CORE</h2>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Advanced encryption modules for secure asset routing.</p>
+            <div>
+                <div class="text-4xl font-black mb-6">$450.00</div>
+                <button onclick="openPay('SSL_V3')" class="w-full py-4 border border-white/20 text-white text-[10px] font-black uppercase hover:bg-white hover:text-black transition">Acquire Asset</button>
+            </div>
+        </div>
+
+        <div class="glass-diamond p-8 flex flex-col justify-between h-[500px]">
+            <h2 class="syne text-2xl gold-glow uppercase italic">XXS_ARCH</h2>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">Proprietary architecture for cross-node synchronization.</p>
+            <div>
+                <div class="text-4xl font-black mb-6">$600.00</div>
+                <button onclick="openPay('XXS_ARCH')" class="w-full py-4 border border-white/20 text-white text-[10px] font-black uppercase hover:bg-white hover:text-black transition">Acquire Asset</button>
+            </div>
+        </div>
+
+        <div class="glass-diamond p-8 flex flex-col justify-between h-[500px]">
+            <h2 class="syne text-2xl gold-glow uppercase italic">TLP_GLOBAL</h2>
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest">The complete global deployment suite with multi-bank bridging.</p>
+            <div>
+                <div class="text-4xl font-black mb-6">$750.00</div>
+                <button onclick="openPay('TLP_GLOBAL')" class="w-full py-4 border border-white/20 text-white text-[10px] font-black uppercase hover:bg-white hover:text-black transition">Acquire Asset</button>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="payment-modal">
+        <div class="max-w-md w-full glass-diamond p-10 text-center border-yellow-600/50">
+            <h3 id="payment-asset" class="syne text-2xl gold-glow mb-8 uppercase italic">Asset Acquisition</h3>
             
-            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
-                <div>
-                    <span class="bg-yellow-600 text-white text-[8px] px-2 py-1 font-black uppercase">Premier Asset</span>
-                    <h2 class="syne text-2xl mt-4 mb-4 uppercase italic">KDP_Stabilize</h2>
-                    <p class="text-[10px] text-gray-500 leading-relaxed uppercase tracking-widest">
-                        Three-page stabilization framework for high-traffic nodes and automated bridge security.
-                    </p>
-                </div>
-                <div>
-                    <div class="text-3xl font-black mb-6">$200.00</div>
-                    <a href="kdp-framework.html" class="block w-full text-center py-4 bg-black text-white text-[10px] font-black uppercase tracking-widest hover:bg-yellow-600 transition">View Code File</a>
-                </div>
+            <div class="flex space-x-4 mb-8">
+                <button onclick="setBank('intl')" id="btn-intl" class="flex-1 py-2 border-b-2 border-yellow-600 text-[9px] uppercase font-bold tracking-widest">Wells Fargo</button>
+                <button onclick="setBank('local')" id="btn-local" class="flex-1 py-2 border-b-2 border-transparent text-gray-500 text-[9px] uppercase font-bold tracking-widest">Lead Bank</button>
             </div>
 
-            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
-                <h2 class="syne text-2xl uppercase italic">SSL_V3_Enc</h2>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Standard secure socket layer logic for private routing.</p>
-                <div class="text-3xl font-black mb-6">$150.00</div>
-                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
+            <div id="bank-intl" class="text-left space-y-4 mb-10">
+                <div class="bg-white/5 p-4 rounded-xl"><p class="text-[7px] text-gray-500">ACC</p><p class="text-xs font-bold text-yellow-600">40630253350827460</p></div>
+                <div class="bg-white/5 p-4 rounded-xl"><p class="text-[7px] text-gray-500">ROUTING</p><p class="text-xs">121000248</p></div>
+                <div class="bg-white/5 p-4 rounded-xl"><p class="text-[7px] text-gray-500">SWIFT</p><p class="text-xs">WFBIUS6SXXX</p></div>
             </div>
 
-            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
-                <h2 class="syne text-2xl uppercase italic">XXS_Core</h2>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Core architecture for cross-node synchronization.</p>
-                <div class="text-3xl font-black mb-6">$450.00</div>
-                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
+            <div id="bank-local" class="hidden text-left space-y-4 mb-10">
+                <div class="bg-white/5 p-4 rounded-xl"><p class="text-[7px] text-gray-500">ACC</p><p class="text-xs font-bold text-yellow-600">216115919870</p></div>
+                <div class="bg-white/5 p-4 rounded-xl"><p class="text-[7px] text-gray-500">BANK</p><p class="text-xs uppercase">Lead Bank</p></div>
             </div>
 
-            <div class="diamond-card p-8 flex flex-col justify-between h-[450px]">
-                <h2 class="syne text-2xl uppercase italic">TLP_Pro</h2>
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest">Global deployment suite with multi-bank bridging.</p>
-                <div class="text-3xl font-black mb-6">$750.00</div>
-                <button onclick="alert('Proceed to Concierge for Payment')" class="w-full py-4 bg-black text-white text-[10px] font-black uppercase">Acquire</button>
-            </div>
-
+            <button onclick="closePay()" class="text-[9px] text-gray-600 uppercase tracking-widest hover:text-white transition">Cancel Request</button>
         </div>
     </div>
+
+    <script>
+        function openPay(asset) {
+            document.getElementById('payment-asset').innerText = asset;
+            document.getElementById('payment-modal').style.display = 'flex';
+        }
+        function closePay() { document.getElementById('payment-modal').style.display = 'none'; }
+        
+        function setBank(type) {
+            const intl = document.getElementById('bank-intl');
+            const local = document.getElementById('bank-local');
+            const bIntl = document.getElementById('btn-intl');
+            const bLocal = document.getElementById('btn-local');
+
+            if(type === 'intl') {
+                intl.classList.remove('hidden'); local.classList.add('hidden');
+                bIntl.style.borderColor = '#D4AF37'; bIntl.style.color = '#fff';
+                bLocal.style.borderColor = 'transparent'; bLocal.style.color = '#444';
+            } else {
+                local.classList.remove('hidden'); intl.classList.add('hidden');
+                bLocal.style.borderColor = '#D4AF37'; bLocal.style.color = '#fff';
+                bIntl.style.borderColor = 'transparent'; bIntl.style.color = '#444';
+            }
+        }
+    </script>
 </body>
 </html>
