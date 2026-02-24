@@ -3,105 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE VAULT | 3D_CORE</title>
+    <title>ELITE LOGIC | LOGO_MAGIC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow: hidden; height: 100%; }
+        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
         .syne { font-family: 'Syne', sans-serif; }
         
-        /* 3D Particle Canvas Background */
-        #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; width: 100vw; height: 100vh; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        
-        /* Interactive 3D Card */
-        .vault-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 40px;
-            box-shadow: 0 0 80px rgba(212, 175, 55, 0.1);
-            animation: float 8s ease-in-out infinite;
+        /* 3D LOGO MAGIC BACKGROUND */
+        .logo-bg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80vw; height: 80vw; max-width: 600px;
+            background: url('https://i.ibb.co/v4m0YwL/Elite-Logic-Logo.png') no-repeat center;
+            background-size: contain; filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.2));
+            opacity: 0.15; z-index: -1; animation: pulseLogo 10s ease-in-out infinite;
         }
+        @keyframes pulseLogo { 0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.1; } 50% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 0.2; } }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotateX(2deg); }
-            50% { transform: translateY(-30px) rotateX(-2deg); }
+        /* LIVE COUNTER NOTIFICATION */
+        #live-counter {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px); border: 1px solid rgba(212,175,55,0.3);
+            padding: 12px 20px; border-radius: 15px; display: none; z-index: 1000;
         }
 
         .gold-glow { color: #D4AF37; text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
-        .btn-magic { background: #fff; color: #000; transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); }
-        .btn-magic:hover { background: #D4AF37; color: #fff; box-shadow: 0 0 30px #D4AF37; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <div class="logo-bg"></div>
 
-    <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50">
-        <div class="syne text-xs tracking-[0.6em] uppercase">The_Vault</div>
+    <div id="live-counter" class="animate-bounce">
+        <p class="text-[9px] uppercase tracking-widest text-yellow-600 font-bold mb-1">Recent Acquisition</p>
+        <p id="counter-text" class="text-[10px] text-white">User in London purchased TLP_PRO</p>
+    </div>
+
+    <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50 backdrop-blur-sm">
+        <div class="syne text-xs tracking-[0.6em] uppercase gold-glow">Elite_Logic</div>
         <div class="flex space-x-6">
-            <a href="https://wa.me/15739142195" class="text-[10px] border border-white/20 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase">Concierge</a>
+            <a href="catalog.html" onmouseenter="playHum()" class="text-[10px] border border-white/20 px-4 py-2 rounded-full hover:bg-yellow-600 transition uppercase">Acquire</a>
         </div>
     </nav>
 
     <main class="h-screen flex items-center justify-center px-6">
-        <div class="vault-card p-12 max-w-lg w-full text-center">
-            <div class="mb-8">
-                <span class="text-[9px] uppercase tracking-[0.8em] text-gray-500">Secure Node // 2026</span>
-                <h1 class="syne text-5xl md:text-7xl mt-4 leading-none gold-glow uppercase italic">Elite Logic.</h1>
-            </div>
-            
-            <p class="text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest mb-10">
-                Premium SSL, XXS, and TLP infrastructure. Verified via Wells Fargo and Lead Bank protocols.
+        <div class="text-center">
+            <span class="text-[9px] uppercase tracking-[1em] text-gray-500 mb-4 block" data-aos="fade-down">Secure Node // 2026</span>
+            <h1 class="syne text-5xl md:text-8xl leading-none gold-glow uppercase italic mb-8">LOGO_MAGIC</h1>
+            <p class="max-w-md mx-auto text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-12 leading-relaxed">
+                Strategic Intelligence Assets. Verified via Wells Fargo & Lead Bank Protocols.
             </p>
-
-            <div class="grid grid-cols-2 gap-4 mb-10">
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="text-[8px] text-gray-600 mb-1">INTERNATIONAL</p>
-                    <p class="text-[10px] font-bold">Wells Fargo</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="text-[8px] text-gray-600 mb-1">LOCAL</p>
-                    <p class="text-[10px] font-bold">Lead Bank</p>
-                </div>
-            </div>
-
-            <a href="catalog.html" class="btn-magic block w-full py-5 rounded-2xl syne text-sm uppercase tracking-widest font-black">
+            <a href="catalog.html" onmouseenter="playClick()" class="bg-white text-black px-12 py-5 rounded-2xl syne text-xs uppercase font-black hover:bg-yellow-600 hover:text-white transition-all">
                 Enter Collection
             </a>
         </div>
     </main>
 
+    <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+    <audio id="hum-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+
     <script>
-        // Simple 3D Particle Logic for Mobile
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            for(let i=0; i<80; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    speed: Math.random() * 0.5
-                });
-            }
+        // SOUND OF LUXURY LOGIC
+        function playClick() { document.getElementById('click-sound').play(); }
+        function playHum() { document.getElementById('hum-sound').play(); }
+
+        // LIVE COUNTER LOGIC
+        const cities = ["London", "New York", "Dubai", "Singapore", "Lagos", "Berlin"];
+        const products = ["SSL_V3", "XXS_CORE", "TLP_PRO"];
+        const counter = document.getElementById('live-counter');
+        const counterText = document.getElementById('counter-text');
+
+        function showNotification() {
+            const city = cities[Math.floor(Math.random() * cities.length)];
+            const product = products[Math.floor(Math.random() * products.length)];
+            counterText.innerText = `User in ${city} purchased ${product}`;
+            counter.style.display = 'block';
+            setTimeout(() => { counter.style.display = 'none'; }, 5000);
         }
-        function animate() {
-            ctx.clearRect(0,0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(212, 175, 55, 0.4)';
-            particles.forEach(p => {
-                p.y -= p.speed;
-                if(p.y < 0) p.y = canvas.height;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animate);
-        }
-        init(); animate();
+
+        setInterval(showNotification, 60000); // Triggers every 60 seconds
+        setTimeout(showNotification, 5000); // Initial trigger
     </script>
 </body>
 </html>
