@@ -2,87 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ELITE LOGIC | LOGO_MAGIC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ELITE LOGIC | 3D_ULTIMATE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
     <style>
-        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body, html { background: #000; color: #fff; font-family: 'JetBrains Mono', monospace; height: 100%; width: 100%; overflow: hidden; }
         .syne { font-family: 'Syne', sans-serif; }
         
-        /* 3D LOGO MAGIC BACKGROUND */
-        .logo-bg {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 80vw; height: 80vw; max-width: 600px;
-            background: url('https://i.ibb.co/v4m0YwL/Elite-Logic-Logo.png') no-repeat center;
-            background-size: contain; filter: drop-shadow(0 0 50px rgba(212, 175, 55, 0.2));
-            opacity: 0.15; z-index: -1; animation: pulseLogo 10s ease-in-out infinite;
-        }
-        @keyframes pulseLogo { 0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.1; } 50% { transform: translate(-50%, -50%) scale(1.1) rotate(5deg); opacity: 0.2; } }
+        /* THE 3D ANIMATED WALLPAPER CANVAS */
+        #canvas3d { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* LIVE COUNTER NOTIFICATION */
-        #live-counter {
-            position: fixed; bottom: 20px; left: 20px; background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px); border: 1px solid rgba(212,175,55,0.3);
-            padding: 12px 20px; border-radius: 15px; display: none; z-index: 1000;
+        /* MOBILE-FIRST RESPONSIVE CARDS */
+        .main-container { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 350px; /* Perfect for iPhone/Android */
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
         }
 
-        .gold-glow { color: #D4AF37; text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .gold-glow { color: #D4AF37; text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        
+        /* LIVE COUNTER - MOBILE OPTIMIZED */
+        #notification {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 320px; background: rgba(10,10,10,0.9);
+            border: 1px solid #D4AF37; padding: 10px; border-radius: 12px;
+            display: none; z-index: 1000; font-size: 10px;
+        }
+
+        /* SOUND FEEDBACK CLASSES */
+        .btn-active:active { transform: scale(0.95); background: #D4AF37; }
     </style>
 </head>
 <body>
 
-    <div class="logo-bg"></div>
+    <canvas id="canvas3d"></canvas>
 
-    <div id="live-counter" class="animate-bounce">
-        <p class="text-[9px] uppercase tracking-widest text-yellow-600 font-bold mb-1">Recent Acquisition</p>
-        <p id="counter-text" class="text-[10px] text-white">User in London purchased TLP_PRO</p>
+    <div id="notification">
+        <span class="text-yellow-600 font-bold uppercase tracking-tighter">● LIVE_ACQUISITION:</span> 
+        <span id="notif-text" class="text-white">User in Dubai purchased XXS_CORE</span>
     </div>
 
-    <nav class="fixed top-0 w-full p-8 flex justify-between items-center z-50 backdrop-blur-sm">
-        <div class="syne text-xs tracking-[0.6em] uppercase gold-glow">Elite_Logic</div>
-        <div class="flex space-x-6">
-            <a href="catalog.html" onmouseenter="playHum()" class="text-[10px] border border-white/20 px-4 py-2 rounded-full hover:bg-yellow-600 transition uppercase">Acquire</a>
-        </div>
+    <nav class="fixed top-0 w-full p-6 flex justify-between items-center z-50">
+        <div class="syne text-[10px] tracking-[0.4em] gold-glow">ELITE_LOGIC</div>
+        <a href="https://wa.me/15739142195" class="text-[9px] border border-yellow-600/30 px-4 py-2 rounded-full uppercase">Concierge</a>
     </nav>
 
-    <main class="h-screen flex items-center justify-center px-6">
-        <div class="text-center">
-            <span class="text-[9px] uppercase tracking-[1em] text-gray-500 mb-4 block" data-aos="fade-down">Secure Node // 2026</span>
-            <h1 class="syne text-5xl md:text-8xl leading-none gold-glow uppercase italic mb-8">LOGO_MAGIC</h1>
-            <p class="max-w-md mx-auto text-[10px] text-gray-400 uppercase tracking-[0.3em] mb-12 leading-relaxed">
-                Strategic Intelligence Assets. Verified via Wells Fargo & Lead Bank Protocols.
+    <div class="main-container">
+        <div class="glass-card">
+            <div class="mb-6">
+                <span class="text-[8px] text-gray-500 uppercase tracking-[0.5em]">Global Infrastructure</span>
+                <h1 class="syne text-4xl mt-2 gold-glow uppercase italic">Elite<br>Logic</h1>
+            </div>
+
+            <p class="text-[9px] text-gray-400 uppercase tracking-widest leading-loose mb-8">
+                Proprietary code bundles.<br>Verified via Wells Fargo & Lead Bank.
             </p>
-            <a href="catalog.html" onmouseenter="playClick()" class="bg-white text-black px-12 py-5 rounded-2xl syne text-xs uppercase font-black hover:bg-yellow-600 hover:text-white transition-all">
+
+            <div class="space-y-3 mb-8">
+                <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex justify-between items-center">
+                    <span class="text-[8px] text-gray-500 uppercase">Intl Route</span>
+                    <span class="text-[10px] font-bold">Wells Fargo</span>
+                </div>
+                <div class="bg-white/5 p-3 rounded-xl border border-white/5 flex justify-between items-center">
+                    <span class="text-[8px] text-gray-500 uppercase">Local Route</span>
+                    <span class="text-[10px] font-bold">Lead Bank</span>
+                </div>
+            </div>
+
+            <a href="catalog.html" onclick="playClick()" class="btn-active block w-full py-4 bg-white text-black rounded-xl syne text-xs uppercase font-black tracking-widest transition-all">
                 Enter Collection
             </a>
         </div>
-    </main>
+    </div>
 
-    <audio id="click-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
-    <audio id="hum-sound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <audio id="click-sfx" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
 
     <script>
-        // SOUND OF LUXURY LOGIC
-        function playClick() { document.getElementById('click-sound').play(); }
-        function playHum() { document.getElementById('hum-sound').play(); }
+        // 3D ANIMATED LOGO WALLPAPER SCRIPT
+        const canvas = document.getElementById('canvas3d');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-        // LIVE COUNTER LOGIC
-        const cities = ["London", "New York", "Dubai", "Singapore", "Lagos", "Berlin"];
-        const products = ["SSL_V3", "XXS_CORE", "TLP_PRO"];
-        const counter = document.getElementById('live-counter');
-        const counterText = document.getElementById('counter-text');
-
-        function showNotification() {
-            const city = cities[Math.floor(Math.random() * cities.length)];
-            const product = products[Math.floor(Math.random() * products.length)];
-            counterText.innerText = `User in ${city} purchased ${product}`;
-            counter.style.display = 'block';
-            setTimeout(() => { counter.style.display = 'none'; }, 5000);
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            for(let i=0; i<60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    speedX: (Math.random() - 0.5) * 0.5,
+                    speedY: (Math.random() - 0.5) * 0.5
+                });
+            }
         }
 
-        setInterval(showNotification, 60000); // Triggers every 60 seconds
-        setTimeout(showNotification, 5000); // Initial trigger
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#D4AF37';
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(draw);
+        }
+
+        init(); draw();
+        window.addEventListener('resize', init);
+
+        // NOTIFICATION LOGIC
+        const cities = ["London", "New York", "Dubai", "Lagos", "Paris"];
+        const products = ["SSL_V3", "XXS_CORE", "TLP_PRO"];
+        function showNotif() {
+            const notif = document.getElementById('notification');
+            document.getElementById('notif-text').innerText = `User in ${cities[Math.floor(Math.random()*cities.length)]} purchased ${products[Math.floor(Math.random()*products.length)]}`;
+            notif.style.display = 'block';
+            setTimeout(() => { notif.style.display = 'none'; }, 4000);
+        }
+        setInterval(showNotif, 20000);
+        function playClick() { document.getElementById('click-sfx').play(); }
     </script>
 </body>
 </html>
